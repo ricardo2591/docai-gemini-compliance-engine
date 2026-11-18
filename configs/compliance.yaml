@@ -1,0 +1,37 @@
+# Configuration for the Multimodal Document AI & Compliance Engine
+# All paths resolve relative to repository root.
+
+paths:
+  fixtures_dir: "data/fixtures"
+  output_dir: "reports/output"
+  figures_dir: "reports/figures"
+
+pipeline:
+  facility_operator_name: "Facility Operator"
+  template_display_name: "Access Request Template"
+  gemini_model: "gemini-2.5-flash"
+  min_text_length_chars: 50
+  safety_training_validity_months: 18
+  fuzzy_name_similarity_threshold: 0.90
+
+watcher:
+  debounce_seconds: 60
+  poll_interval_seconds: 10
+  max_workers: 1
+  ticket_regex: "^([A-Za-z0-9-]+)_"
+
+excel_template:
+  start_date_cell: "D3"
+  end_date_cell: "E3"
+  table_header_row_0idx: 7
+  column_mapping:
+    "Nombre Personal": "full_name"
+    "Full Name": "full_name"
+    "ARL": "insurance_provider"
+    "EPS": "health_provider"
+    "CC": "worker_id"
+    "Worker ID": "worker_id"
+    "Contratista": "contractor_name"
+    "Contractor": "contractor_name"
+    "Correo": "email"
+    "Email": "email"

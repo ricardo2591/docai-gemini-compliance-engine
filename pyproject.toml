@@ -1,0 +1,75 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "docai-gemini-compliance-engine"
+version = "1.0.0"
+description = "Event-driven Document AI, Cloud Vision OCR, and Gemini structured extraction pipeline with deterministic contractor compliance evaluation."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [
+  { name = "Ricardo Burgos" }
+]
+keywords = [
+  "document-ai",
+  "gemini",
+  "ocr",
+  "idp",
+  "compliance",
+  "pydantic",
+  "python",
+  "automation",
+]
+dependencies = [
+  "numpy>=1.26.0",
+  "openpyxl>=3.1.2",
+  "pandas>=2.1.0",
+  "pydantic>=2.7.0",
+  "pypdf>=5.0.0",
+  "python-dateutil>=2.9.0",
+  "python-dotenv>=1.0.1",
+  "pyyaml>=6.0.1",
+  "reportlab>=4.1.0",
+]
+
+[project.optional-dependencies]
+gcp = [
+  "google-api-python-client>=2.150.0",
+  "google-auth>=2.35.0",
+  "google-auth-oauthlib>=1.2.0",
+  "google-cloud-documentai>=3.0.0",
+  "google-cloud-vision>=3.4.0",
+  "google-genai>=1.0.0",
+  "gspread>=6.0.0",
+]
+dev = [
+  "ipykernel>=6.29.0",
+  "matplotlib>=3.8.0",
+  "nbconvert>=7.16.0",
+  "nbformat>=5.10.0",
+  "pytest>=8.0.0",
+  "ruff>=0.6.0",
+  "seaborn>=0.13.0",
+]
+
+[project.scripts]
+compliance-run = "compliance_engine.cli:run_cmd"
+compliance-fixtures = "compliance_engine.cli:fixtures_cmd"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+exclude = ["notebooks"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "B"]
+ignore = ["E501"]

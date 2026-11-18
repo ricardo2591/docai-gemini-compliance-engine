@@ -1,0 +1,52 @@
+# ==============================================================================
+# Strict Confidentiality, Secrets & Artifact .gitignore
+# ==============================================================================
+
+# Python & virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+
+# Environment variables & cloud credentials (NEVER commit secrets)
+.env
+.env.*
+!.env.example
+credentials*.json
+*service_account*.json
+vision_api*.json
+token*.json
+
+# Logs, caches & progress state
+*.log
+.ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Non-synthetic runtime IO folders
+data/inbox/*
+!data/inbox/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+reports/output/*
+!reports/output/.gitkeep
+
+# Temporary Office lock files & archives
+~$*.xlsx
+*.rar
+*.zip
+
+# OS & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
